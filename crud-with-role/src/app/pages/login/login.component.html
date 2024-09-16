@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="input-box">
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Username"
+      [ngClass]="{'input-error': username?.invalid && username?.touched}"
+    />
+    <div class="error-message" *ngIf="username?.errors && username?.touched">
+      {{ getUsernameErrorMessage() }}
+    </div>
+  </div>
+
+  <div class="input-box">
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      [ngClass]="{'input-error': password?.invalid && password?.touched}"
+    />
+    <div class="error-message" *ngIf="password?.errors && password?.touched">
+      {{ getPasswordErrorMessage() }}
+    </div>
+  </div>
+
+  <button type="submit" class="login-btn" >Login</button>
+</form>
